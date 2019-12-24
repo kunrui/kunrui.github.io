@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?e6203b93be49abddaf1658813927c037"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <link rel="canonical" href="https://gocaff.cn/posts/share-app-api/">
+    
+    
+    <title>分享APP文档 | GoCaff | Go茶馆</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="分享APP">
+    <meta name="description" content="分享APP   版本 修改日志 修改时间 修订人     1.0 初始版本 2019-03-01 10:00 曾焜锐     技术选型服务软件与版本 Nginx PHP 7.2 Mysql 5.6 Redis Swoole  需要的服务资源 微信服务号（已认证、已开通微信支付、已关联开放平台） 微信开放平台 微信商户平台 阿里云帐号（OSS、CDN、短信、SSL证书） 个推  APP交互 详见AP">
+<meta name="keywords" content="分享APP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分享APP文档">
+<meta property="og:url" content="https://gocaff.cn/posts/share-app-api/index.html">
+<meta property="og:site_name" content="GoCaff">
+<meta property="og:description" content="分享APP   版本 修改日志 修改时间 修订人     1.0 初始版本 2019-03-01 10:00 曾焜锐     技术选型服务软件与版本 Nginx PHP 7.2 Mysql 5.6 Redis Swoole  需要的服务资源 微信服务号（已认证、已开通微信支付、已关联开放平台） 微信开放平台 微信商户平台 阿里云帐号（OSS、CDN、短信、SSL证书） 个推  APP交互 详见AP">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-24T03:54:05.145Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="分享APP文档">
+<meta name="twitter:description" content="分享APP   版本 修改日志 修改时间 修订人     1.0 初始版本 2019-03-01 10:00 曾焜锐     技术选型服务软件与版本 Nginx PHP 7.2 Mysql 5.6 Redis Swoole  需要的服务资源 微信服务号（已认证、已开通微信支付、已关联开放平台） 微信开放平台 微信商户平台 阿里云帐号（OSS、CDN、短信、SSL证书） 个推  APP交互 详见AP">
+    
+        <link rel="alternate" type="application/atom+xml" title="GoCaff" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">RUI</h5>
+          <a href="mailto:946667296@qq.com" title="946667296@qq.com" class="mail">946667296@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://snibox.gocaff.cn" target="_blank" >
+                <i class="icon icon-lg icon-book"></i>
+                Snibox
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://gocaff.cn/love.html" target="_blank" >
+                <i class="icon icon-lg icon-heart"></i>
+                Love
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/kunrui" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">分享APP文档</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">分享APP文档</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-07T02:15:39.000Z" itemprop="datePublished" class="page-time">
+  2019-03-07
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/API文档/">API文档</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#分享APP"><span class="post-toc-number">1.</span> <span class="post-toc-text">分享APP</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#技术选型"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">技术选型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#服务软件与版本"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">服务软件与版本</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#需要的服务资源"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">需要的服务资源</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#APP交互"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">APP交互</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#接口请求约定"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">接口请求约定</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-服务器请求接口地址"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">1. 服务器请求接口地址</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-请求的方式"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">2. 请求的方式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-验证请求的有效性"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">3. 验证请求的有效性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-调用频率限制"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">4. 调用频率限制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-接口版本控制与数据格式"><span class="post-toc-number">1.3.5.</span> <span class="post-toc-text">5. 接口版本控制与数据格式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-数据请求格式"><span class="post-toc-number">1.3.6.</span> <span class="post-toc-text">6. 数据请求格式</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#所需要的数据表"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">所需要的数据表</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#提现日志表"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">提现日志表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#图片表"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">图片表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#视频表"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">视频表</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#接口详情"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">接口详情</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#绑定微信（后台会创建用户）"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">绑定微信（后台会创建用户）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#登录（获取Token）"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">登录（获取Token）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#刷新登录状态（刷新Token）"><span class="post-toc-number">1.5.3.</span> <span class="post-toc-text">刷新登录状态（刷新Token）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#退出登录（注销Token）"><span class="post-toc-number">1.5.4.</span> <span class="post-toc-text">退出登录（注销Token）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#获取验证码"><span class="post-toc-number">1.5.5.</span> <span class="post-toc-text">获取验证码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#获取我的资源（分类，分页）"><span class="post-toc-number">1.5.6.</span> <span class="post-toc-text">获取我的资源（分类，分页）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#获取我的资源详情"><span class="post-toc-number">1.5.7.</span> <span class="post-toc-text">获取我的资源详情</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#上传图片"><span class="post-toc-number">1.5.8.</span> <span class="post-toc-text">上传图片</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#上传视频"><span class="post-toc-number">1.5.9.</span> <span class="post-toc-text">上传视频</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#新增分享资源"><span class="post-toc-number">1.5.10.</span> <span class="post-toc-text">新增分享资源</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#删除资源"><span class="post-toc-number">1.5.11.</span> <span class="post-toc-text">删除资源</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#获取取分类"><span class="post-toc-number">1.5.12.</span> <span class="post-toc-text">获取取分类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#添加分类"><span class="post-toc-number">1.5.13.</span> <span class="post-toc-text">添加分类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#编辑分类"><span class="post-toc-number">1.5.14.</span> <span class="post-toc-text">编辑分类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#删除分类"><span class="post-toc-number">1.5.15.</span> <span class="post-toc-text">删除分类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#获取我的分享（分享记录、分类统计）"><span class="post-toc-number">1.5.16.</span> <span class="post-toc-text">获取我的分享（分享记录、分类统计）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开启分享"><span class="post-toc-number">1.5.17.</span> <span class="post-toc-text">开启分享</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关闭分享"><span class="post-toc-number">1.5.18.</span> <span class="post-toc-text">关闭分享</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#客户数据（类型：全部、转发、-精准、分类、用户）"><span class="post-toc-number">1.5.19.</span> <span class="post-toc-text">客户数据（类型：全部、转发、 精准、分类、用户）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#客户数据统计数据（多少人、多少次点击、多少秒）"><span class="post-toc-number">1.5.20.</span> <span class="post-toc-text">客户数据统计数据（多少人、多少次点击、多少秒）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分类统计统计数据（多少人）"><span class="post-toc-number">1.5.21.</span> <span class="post-toc-text">分类统计统计数据（多少人）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据分析（累计点击、累计人数、累计时长、时间范围）"><span class="post-toc-number">1.5.22.</span> <span class="post-toc-text">数据分析（累计点击、累计人数、累计时长、时间范围）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#用户统计（累计文章、累计点击、累计时长）"><span class="post-toc-number">1.5.23.</span> <span class="post-toc-text">用户统计（累计文章、累计点击、累计时长）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#获取用户信息"><span class="post-toc-number">1.5.24.</span> <span class="post-toc-text">获取用户信息</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#会员购买"><span class="post-toc-number">1.5.25.</span> <span class="post-toc-text">会员购买</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#用户付费记录"><span class="post-toc-number">1.5.26.</span> <span class="post-toc-text">用户付费记录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#收入利润统计信息"><span class="post-toc-number">1.5.27.</span> <span class="post-toc-text">收入利润统计信息</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#收入利润报表（分页）"><span class="post-toc-number">1.5.28.</span> <span class="post-toc-text">收入利润报表（分页）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#用户管理（类型，分页）"><span class="post-toc-number">1.5.29.</span> <span class="post-toc-text">用户管理（类型，分页）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#用户邀请二维码（链接）"><span class="post-toc-number">1.5.30.</span> <span class="post-toc-text">用户邀请二维码（链接）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二级代理数量"><span class="post-toc-number">1.5.31.</span> <span class="post-toc-text">二级代理数量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二级代理管理（启用、禁用）"><span class="post-toc-number">1.5.32.</span> <span class="post-toc-text">二级代理管理（启用、禁用）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二级代理邀请二维码（链接）"><span class="post-toc-number">1.5.33.</span> <span class="post-toc-text">二级代理邀请二维码（链接）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#获取支付签名"><span class="post-toc-number">1.5.34.</span> <span class="post-toc-text">获取支付签名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查询支付状态"><span class="post-toc-number">1.5.35.</span> <span class="post-toc-text">查询支付状态</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#JS-SDK-签名（APP是否有类似的？）"><span class="post-toc-number">1.5.36.</span> <span class="post-toc-text">JS-SDK 签名（APP是否有类似的？）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#H5-微信登录"><span class="post-toc-number">1.5.37.</span> <span class="post-toc-text">H5-微信登录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#H5-获取文章信息"><span class="post-toc-number">1.5.38.</span> <span class="post-toc-text">H5-获取文章信息</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#H5-提交在线信息"><span class="post-toc-number">1.5.39.</span> <span class="post-toc-text">H5-提交在线信息</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#H5-获取-JS-SDK-签名"><span class="post-toc-number">1.5.40.</span> <span class="post-toc-text">H5-获取 JS-SDK 签名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#H5-显示邀请页面（一级代理商、二级代理商、普通客户）"><span class="post-toc-number">1.5.41.</span> <span class="post-toc-text">H5-显示邀请页面（一级代理商、二级代理商、普通客户）</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-share-app-api"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">分享APP文档</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-07 10:15:39" datetime="2019-03-07T02:15:39.000Z"  itemprop="datePublished">2019-03-07</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/API文档/">API文档</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="分享APP"><a href="#分享APP" class="headerlink" title="分享APP"></a>分享APP</h1><table>
+<thead>
+<tr>
+<th>版本</th>
+<th>修改日志</th>
+<th>修改时间</th>
+<th>修订人</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>初始版本</td>
+<td>2019-03-01 10:00</td>
+<td>曾焜锐</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h2><h3 id="服务软件与版本"><a href="#服务软件与版本" class="headerlink" title="服务软件与版本"></a>服务软件与版本</h3><ul>
+<li>Nginx</li>
+<li>PHP 7.2</li>
+<li>Mysql 5.6</li>
+<li>Redis</li>
+<li>Swoole</li>
+</ul>
+<h3 id="需要的服务资源"><a href="#需要的服务资源" class="headerlink" title="需要的服务资源"></a>需要的服务资源</h3><ul>
+<li>微信服务号（已认证、已开通微信支付、已关联开放平台）</li>
+<li>微信开放平台</li>
+<li>微信商户平台</li>
+<li>阿里云帐号（OSS、CDN、短信、SSL证书）</li>
+<li>个推</li>
+</ul>
+<h2 id="APP交互"><a href="#APP交互" class="headerlink" title="APP交互"></a>APP交互</h2><ul>
+<li>详见APP原型设计</li>
+</ul>
+<h2 id="接口请求约定"><a href="#接口请求约定" class="headerlink" title="接口请求约定"></a>接口请求约定</h2><h3 id="1-服务器请求接口地址"><a href="#1-服务器请求接口地址" class="headerlink" title="1. 服务器请求接口地址"></a>1. 服务器请求接口地址</h3><blockquote>
+<ul>
+<li>开发服务器 <code>https://api.xxx.com</code></li>
+</ul>
+</blockquote>
+<h3 id="2-请求的方式"><a href="#2-请求的方式" class="headerlink" title="2. 请求的方式"></a>2. 请求的方式</h3><blockquote>
+<ul>
+<li>所有的请求都以 <a href="https://baike.baidu.com/item/RESTful/4406165?fr=aladdin" target="_blank" rel="noopener">RESTful API</a>  的方式发送<br><a href="https://blog.csdn.net/shog808/article/details/79932968" target="_blank" rel="noopener">RESTful API风格参考一</a><br><a href="https://blog.florimondmanca.com/restful-api-design-13-best-practices-to-make-your-users-happy" target="_blank" rel="noopener">RESTful API风格参考二</a><br><a href="https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design" target="_blank" rel="noopener">RESTful API风格参考三</a></li>
+<li>通过 <code>http</code> 请求类型区分操作类型</li>
+</ul>
+</blockquote>
+<ul>
+<li>GET - 阅读资源</li>
+<li>POST - 创建新资源</li>
+<li>PUT - 修改现有资源</li>
+<li>DELETE - 删除资源</li>
+</ul>
+<blockquote>
+<ul>
+<li>根据 <code>http</code> 状态码返回请求状态</li>
+</ul>
+</blockquote>
+<ul>
+<li>200 OK 成功的要求</li>
+<li>201 Created 保存新对象</li>
+<li>204 No content 对象已删除</li>
+<li>400 Bad Request 返回带有错误消息的JSON</li>
+<li>401 Unauthorized 无法验证您的请求</li>
+<li>402 2FA Token required使用用户的2FA令牌重新尝试请求作为2FA-Token标头</li>
+<li>403 Invalid scope 用户未授权必要的范围</li>
+<li>404 Not Found 没有这样的对象</li>
+<li>429 Too Many Requests 您的连接速度有限</li>
+<li>500 Internal Server Error 出了些问题</li>
+<li>503 Service Unavailable 您的连接受到限制或服务因维护而中断</li>
+</ul>
+<h3 id="3-验证请求的有效性"><a href="#3-验证请求的有效性" class="headerlink" title="3. 验证请求的有效性"></a>3. 验证请求的有效性</h3><blockquote>
+<ul>
+<li>采用 <code>Token</code> 的方式验证用户登陆的有效性，由服务器判断用户的有效性；<code>Token</code> 在服务器端应当是有时效性的，过期需要刷新 <code>Token</code>，刷新 <code>Token</code> 失败应重新调用登录接口获取 <code>Token</code></li>
+<li><code>Token</code> 采用 <a href="https://blog.csdn.net/u014418064/article/details/78565992" target="_blank" rel="noopener">JWT</a> 的方式进行鉴权</li>
+</ul>
+</blockquote>
+<h3 id="4-调用频率限制"><a href="#4-调用频率限制" class="headerlink" title="4. 调用频率限制"></a>4. 调用频率限制</h3><blockquote>
+<ul>
+<li>为了防止服务器被攻击，减少服务器压力，需要对接口进行合适的限流控制，服务器在响应头信息中加入限流的信息，告知客户端当前的限流情况</li>
+</ul>
+</blockquote>
+<ul>
+<li>返回 <code>Headers</code> 信息</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">X-RateLimit-Limit: 100  #最大访问次数</span><br><span class="line">X-RateLimit-Remaining: 93   #剩余的访问次数</span><br><span class="line">X-RateLimit-Reset: 1513784506   #到该时间点，访问次数会重置为 X-RateLimit-Limit</span><br></pre></td></tr></table></figure>
+<ul>
+<li>超过限流次数后，服务器会返回 429 Too Many Requests 错误。</li>
+</ul>
+<h3 id="5-接口版本控制与数据格式"><a href="#5-接口版本控制与数据格式" class="headerlink" title="5. 接口版本控制与数据格式"></a>5. 接口版本控制与数据格式</h3><blockquote>
+<ul>
+<li>可以通过添加头信息 <code>Accept</code> 访问不同接口版本与数据格式</li>
+</ul>
+</blockquote>
+<h3 id="6-数据请求格式"><a href="#6-数据请求格式" class="headerlink" title="6. 数据请求格式"></a>6. 数据请求格式</h3><ul>
+<li>完整的请求示例如下：</li>
+</ul>
+<blockquote>
+<ul>
+<li>请求参数的结构如下：</li>
+<li>请求地址 <code>https://api.XXXXX.com/user</code></li>
+<li>请求类型 <code>PUT</code></li>
+</ul>
+</blockquote>
+<p><code>Headers</code></p>
+<table>
+<thead>
+<tr>
+<th>字段类型</th>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authorization</td>
+<td>用户特征码 <code>Token</code></td>
+<td>string</td>
+<td>是</td>
+<td><code>Bearer</code> + 空格 + <code>Token</code></td>
+</tr>
+<tr>
+<td>Accept</td>
+<td>API版本信息、返回数据格式</td>
+<td>string</td>
+<td>是</td>
+<td>不填写默认为v1版本返回json格式：<code>application/prs.share-app.v1+json</code></td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"Authorization"</span>: <span class="string">"Bearer eyJ0eXAiO..."</span>,</span><br><span class="line">    <span class="attr">"Accept"</span>: <span class="string">"application/prs.share-app.v1+json"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>Body</code></p>
+<table>
+<thead>
+<tr>
+<th>字段类型</th>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nickname</td>
+<td>用户呢称</td>
+<td>string</td>
+<td>是</td>
+<td></td>
+</tr>
+<tr>
+<td>avatar_image_id</td>
+<td>头像图片ID</td>
+<td>int</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>gender</td>
+<td>用户性别</td>
+<td>int</td>
+<td>是</td>
+<td>0-未知,1-男,2-女</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"nickname"</span>: <span class="string">"呢称..."</span>,</span><br><span class="line">    <span class="attr">"avatar_image_id"</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="attr">"gender"</span>: <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>服务器返回参数的结构如下（请求正确）： </li>
+<li>返回状态码 <code>201</code></li>
+</ul>
+</blockquote>
+<p><code>Headers</code></p>
+<table>
+<thead>
+<tr>
+<th>字段类型</th>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-RateLimit-limit</td>
+<td>接口调用总次数</td>
+<td>int</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>X-RateLimit-Remaining</td>
+<td>接口调用剩余次数</td>
+<td>int</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>X-RateLimit-limit</td>
+<td>接口调用次数限制过期时间</td>
+<td>int</td>
+<td>否</td>
+<td>时间戳</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"X-RateLimit-limit"</span>: <span class="number">10</span>,</span><br><span class="line">    <span class="attr">"X-RateLimit-Remaining"</span>: <span class="number">9</span>,</span><br><span class="line">    <span class="attr">"X-RateLimit-limit"</span>: <span class="number">1516862555</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>Body</code></p>
+<table>
+<thead>
+<tr>
+<th>字段类型</th>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>用户ID</td>
+<td>int</td>
+<td>是</td>
+<td></td>
+</tr>
+<tr>
+<td>nickname</td>
+<td>用户呢称</td>
+<td>string</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>avatar</td>
+<td>用户头像</td>
+<td>string</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>gender</td>
+<td>用户性别</td>
+<td>int</td>
+<td>是</td>
+<td>0-未知,1-男,2-女</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>注册时间</td>
+<td>datetime</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"id"</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="attr">"nickname"</span>: <span class="string">"呢称..."</span>,</span><br><span class="line">    <span class="attr">"avatar"</span>: <span class="string">"https://..."</span>,</span><br><span class="line">    <span class="attr">"gender"</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">"created_at"</span>: <span class="string">"2018-09-10 08:30:38"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>服务器返回参数的结构如下（请求错误）： </li>
+<li>返回状态码 <code>422</code></li>
+</ul>
+</blockquote>
+<p><code>Headers</code></p>
+<table>
+<thead>
+<tr>
+<th>字段类型</th>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-RateLimit-limit</td>
+<td>接口调用总次数</td>
+<td>int</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>X-RateLimit-Remaining</td>
+<td>接口调用剩余次数</td>
+<td>int</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>X-RateLimit-limit</td>
+<td>接口调用次数限制过期时间</td>
+<td>int</td>
+<td>否</td>
+<td>时间戳</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"X-RateLimit-limit"</span>: <span class="number">10</span>,</span><br><span class="line">    <span class="attr">"X-RateLimit-Remaining"</span>: <span class="number">9</span>,</span><br><span class="line">    <span class="attr">"X-RateLimit-limit"</span>: <span class="number">1516862555</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>Body</code></p>
+<table>
+<thead>
+<tr>
+<th>字段类型</th>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>message</td>
+<td>错误信息</td>
+<td>string</td>
+<td>是</td>
+<td></td>
+</tr>
+<tr>
+<td>errors</td>
+<td>错误内容</td>
+<td>object</td>
+<td>是</td>
+<td></td>
+</tr>
+<tr>
+<td>status_code</td>
+<td>状态码</td>
+<td>int</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"message"</span>: <span class="string">"422 Unprocessable Entity"</span>,</span><br><span class="line">    <span class="attr">"errors"</span>: &#123;</span><br><span class="line">        <span class="attr">"nickname"</span>: [</span><br><span class="line">            <span class="string">"用户名长度最大为12个字符"</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"status_code"</span>: <span class="number">422</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="所需要的数据表"><a href="#所需要的数据表" class="headerlink" title="所需要的数据表"></a>所需要的数据表</h2><ul>
+<li>详情请看E-R图</li>
+</ul>
+<h3 id="提现日志表"><a href="#提现日志表" class="headerlink" title="提现日志表"></a>提现日志表</h3><h3 id="图片表"><a href="#图片表" class="headerlink" title="图片表"></a>图片表</h3><h3 id="视频表"><a href="#视频表" class="headerlink" title="视频表"></a>视频表</h3><h2 id="接口详情"><a href="#接口详情" class="headerlink" title="接口详情"></a>接口详情</h2><h3 id="绑定微信（后台会创建用户）"><a href="#绑定微信（后台会创建用户）" class="headerlink" title="绑定微信（后台会创建用户）"></a>绑定微信（后台会创建用户）</h3><h3 id="登录（获取Token）"><a href="#登录（获取Token）" class="headerlink" title="登录（获取Token）"></a>登录（获取Token）</h3><h3 id="刷新登录状态（刷新Token）"><a href="#刷新登录状态（刷新Token）" class="headerlink" title="刷新登录状态（刷新Token）"></a>刷新登录状态（刷新Token）</h3><h3 id="退出登录（注销Token）"><a href="#退出登录（注销Token）" class="headerlink" title="退出登录（注销Token）"></a>退出登录（注销Token）</h3><h3 id="获取验证码"><a href="#获取验证码" class="headerlink" title="获取验证码"></a>获取验证码</h3><h3 id="获取我的资源（分类，分页）"><a href="#获取我的资源（分类，分页）" class="headerlink" title="获取我的资源（分类，分页）"></a>获取我的资源（分类，分页）</h3><h3 id="获取我的资源详情"><a href="#获取我的资源详情" class="headerlink" title="获取我的资源详情"></a>获取我的资源详情</h3><h3 id="上传图片"><a href="#上传图片" class="headerlink" title="上传图片"></a>上传图片</h3><h3 id="上传视频"><a href="#上传视频" class="headerlink" title="上传视频"></a>上传视频</h3><h3 id="新增分享资源"><a href="#新增分享资源" class="headerlink" title="新增分享资源"></a>新增分享资源</h3><h3 id="删除资源"><a href="#删除资源" class="headerlink" title="删除资源"></a>删除资源</h3><h3 id="获取取分类"><a href="#获取取分类" class="headerlink" title="获取取分类"></a>获取取分类</h3><h3 id="添加分类"><a href="#添加分类" class="headerlink" title="添加分类"></a>添加分类</h3><h3 id="编辑分类"><a href="#编辑分类" class="headerlink" title="编辑分类"></a>编辑分类</h3><h3 id="删除分类"><a href="#删除分类" class="headerlink" title="删除分类"></a>删除分类</h3><h3 id="获取我的分享（分享记录、分类统计）"><a href="#获取我的分享（分享记录、分类统计）" class="headerlink" title="获取我的分享（分享记录、分类统计）"></a>获取我的分享（分享记录、分类统计）</h3><h3 id="开启分享"><a href="#开启分享" class="headerlink" title="开启分享"></a>开启分享</h3><h3 id="关闭分享"><a href="#关闭分享" class="headerlink" title="关闭分享"></a>关闭分享</h3><h3 id="客户数据（类型：全部、转发、-精准、分类、用户）"><a href="#客户数据（类型：全部、转发、-精准、分类、用户）" class="headerlink" title="客户数据（类型：全部、转发、 精准、分类、用户）"></a>客户数据（类型：全部、转发、 精准、分类、用户）</h3><h3 id="客户数据统计数据（多少人、多少次点击、多少秒）"><a href="#客户数据统计数据（多少人、多少次点击、多少秒）" class="headerlink" title="客户数据统计数据（多少人、多少次点击、多少秒）"></a>客户数据统计数据（多少人、多少次点击、多少秒）</h3><h3 id="分类统计统计数据（多少人）"><a href="#分类统计统计数据（多少人）" class="headerlink" title="分类统计统计数据（多少人）"></a>分类统计统计数据（多少人）</h3><h3 id="数据分析（累计点击、累计人数、累计时长、时间范围）"><a href="#数据分析（累计点击、累计人数、累计时长、时间范围）" class="headerlink" title="数据分析（累计点击、累计人数、累计时长、时间范围）"></a>数据分析（累计点击、累计人数、累计时长、时间范围）</h3><h3 id="用户统计（累计文章、累计点击、累计时长）"><a href="#用户统计（累计文章、累计点击、累计时长）" class="headerlink" title="用户统计（累计文章、累计点击、累计时长）"></a>用户统计（累计文章、累计点击、累计时长）</h3><h3 id="获取用户信息"><a href="#获取用户信息" class="headerlink" title="获取用户信息"></a>获取用户信息</h3><h3 id="会员购买"><a href="#会员购买" class="headerlink" title="会员购买"></a>会员购买</h3><h3 id="用户付费记录"><a href="#用户付费记录" class="headerlink" title="用户付费记录"></a>用户付费记录</h3><h3 id="收入利润统计信息"><a href="#收入利润统计信息" class="headerlink" title="收入利润统计信息"></a>收入利润统计信息</h3><h3 id="收入利润报表（分页）"><a href="#收入利润报表（分页）" class="headerlink" title="收入利润报表（分页）"></a>收入利润报表（分页）</h3><h3 id="用户管理（类型，分页）"><a href="#用户管理（类型，分页）" class="headerlink" title="用户管理（类型，分页）"></a>用户管理（类型，分页）</h3><h3 id="用户邀请二维码（链接）"><a href="#用户邀请二维码（链接）" class="headerlink" title="用户邀请二维码（链接）"></a>用户邀请二维码（链接）</h3><h3 id="二级代理数量"><a href="#二级代理数量" class="headerlink" title="二级代理数量"></a>二级代理数量</h3><h3 id="二级代理管理（启用、禁用）"><a href="#二级代理管理（启用、禁用）" class="headerlink" title="二级代理管理（启用、禁用）"></a>二级代理管理（启用、禁用）</h3><h3 id="二级代理邀请二维码（链接）"><a href="#二级代理邀请二维码（链接）" class="headerlink" title="二级代理邀请二维码（链接）"></a>二级代理邀请二维码（链接）</h3><h3 id="获取支付签名"><a href="#获取支付签名" class="headerlink" title="获取支付签名"></a>获取支付签名</h3><h3 id="查询支付状态"><a href="#查询支付状态" class="headerlink" title="查询支付状态"></a>查询支付状态</h3><h3 id="JS-SDK-签名（APP是否有类似的？）"><a href="#JS-SDK-签名（APP是否有类似的？）" class="headerlink" title="JS-SDK 签名（APP是否有类似的？）"></a>JS-SDK 签名（APP是否有类似的？）</h3><h3 id="H5-微信登录"><a href="#H5-微信登录" class="headerlink" title="H5-微信登录"></a>H5-微信登录</h3><h3 id="H5-获取文章信息"><a href="#H5-获取文章信息" class="headerlink" title="H5-获取文章信息"></a>H5-获取文章信息</h3><h3 id="H5-提交在线信息"><a href="#H5-提交在线信息" class="headerlink" title="H5-提交在线信息"></a>H5-提交在线信息</h3><h3 id="H5-获取-JS-SDK-签名"><a href="#H5-获取-JS-SDK-签名" class="headerlink" title="H5-获取 JS-SDK 签名"></a>H5-获取 <code>JS-SDK</code> 签名</h3><h3 id="H5-显示邀请页面（一级代理商、二级代理商、普通客户）"><a href="#H5-显示邀请页面（一级代理商、二级代理商、普通客户）" class="headerlink" title="H5-显示邀请页面（一级代理商、二级代理商、普通客户）"></a>H5-显示邀请页面（一级代理商、二级代理商、普通客户）</h3>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-12-24T03:54:05.145Z" itemprop="dateUpdated">2019-12-24 11:54:05</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://gocaff.cn">
+            <img src="/img/avatar.jpg" alt="RUI">
+            RUI
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分享APP/">分享APP</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gocaff.cn/posts/share-app-api/&title=《分享APP文档》 — GoCaff&pic=https://gocaff.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gocaff.cn/posts/share-app-api/&title=《分享APP文档》 — GoCaff&source=Go茶馆个人博客、博客" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gocaff.cn/posts/share-app-api/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《分享APP文档》 — GoCaff&url=https://gocaff.cn/posts/share-app-api/&via=https://gocaff.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gocaff.cn/posts/share-app-api/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/dev-null-2-1/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">shell中 /dev/null 2&gt;&amp;1是什么?</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/posts/php-interview/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">PHP常见面试题</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: '946667296@qq.com' == 'true',
+            verify: 'false' == 'true',
+            appId: "kLnGDnPb5kw19RyINBLxYQH0-gzGzoHsz",
+            appKey: "FbokR9djf0YB9o3Hbq5K3D0E",
+            avatar: "mm",
+            placeholder: "来说点什么吧~",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+    <span class="post-count">
+        总字数：4k
+    </span>
+</p>
+
+
+        <p style="margin-top: 8px;">
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>学如逆水行舟，不进则退</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>RUI &copy; 2019</span>
+            <span style="display: inline-block;">
+                
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备14087126号-1</a><br>
+                
+                <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
+            </span>
+            <span>
+                
+                <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44530202000054" target="_blank">
+                    <img src="/img/beian.png" style="width: 16px;height: 16px;margin-top: -3px;">
+                    粤公网安备 44530202000054号
+                </a>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gocaff.cn/posts/share-app-api/&title=《分享APP文档》 — GoCaff&pic=https://gocaff.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gocaff.cn/posts/share-app-api/&title=《分享APP文档》 — GoCaff&source=Go茶馆个人博客、博客" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gocaff.cn/posts/share-app-api/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《分享APP文档》 — GoCaff&url=https://gocaff.cn/posts/share-app-api/&via=https://gocaff.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gocaff.cn/posts/share-app-api/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABvElEQVR42u3aS3KDMBAFQN//0mSbDfg9DSh2qrVyuUA0LKbmo9crXsev1V55dm+y2+LCxcUdc4/LlXPP7rp+Vm7AxcXdzz17fHLNdai6JuYGXFzc7+LmiQsuLu7/5iahLalicHFxP5k7SUcm7ZIHazVcXNwBN+9SPvf7kf4uLi7uEvcoVxt01nY43RkXF3cLd56gJP/kg5aolMLFxX2Y24an6+vb4xd5JvNaq5ZwcXGXuEW0i7ltEdWOZnFxcZ/mtgOP9lBFHsiST4OLi/tX3DZxmRdCeWMFFxd3D3eSiOStz7WxTV384OLi3sRtD1LcFc4W0yNcXNwt3BzRtjza5mkxdMHFxd3OnbRK82Qoz7/eBDJcXNwt3CQ8rY1MbrsXFxd3OzcJZDmoTZ6i4IiLi7ud23ZY7z2iEbVLcHFxt3Pb0qVttq61V+rBEC4u7oB7lGutwdH+X3xXXFzcB7hrRyKKgei4dbL4Mri4uGNuHrzmLzAfyeDi4u7kTgJNi2sD3JuDm7i4uB/Azdso7T5FxYaLi/th3Bw0qrfOhLi4uBu5eZN0cuxy7bVxcXH3c+9tbibBq02PcHFxN3J/ADI+XJtoo7hwAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
