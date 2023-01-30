@@ -2,45 +2,71 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://gocaff.cn/categories/index.html</loc>
+    <loc>https://gocaff.cn/about/index.html</loc>
     
-    <lastmod>2022-01-17T02:54:33.684Z</lastmod>
+    <lastmod>2023-01-30</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gocaff.cn/posts/dev-null-2-1.html</loc>
+    
+    <lastmod>2023-01-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://gocaff.cn/tags/index.html</loc>
     
-    <lastmod>2022-01-17T02:54:33.684Z</lastmod>
+    <lastmod>2023-01-30</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://gocaff.cn/posts/dev-null-2-1/</loc>
+    <loc>https://gocaff.cn/categories/index.html</loc>
     
-    <lastmod>2022-01-17T02:54:33.683Z</lastmod>
+    <lastmod>2023-01-30</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+
+  <url>
+    <loc>https://gocaff.cn/</loc>
+    <lastmod>2023-01-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  
+  <url>
+    <loc>https://gocaff.cn/tags/shell/</loc>
+    <lastmod>2023-01-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://gocaff.cn/posts/php-function/</loc>
-    
-    <lastmod>2022-01-17T02:54:33.683Z</lastmod>
-    
+    <loc>https://gocaff.cn/tags/liunx/</loc>
+    <lastmod>2023-01-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
   </url>
   
-  <url>
-    <loc>https://gocaff.cn/posts/share-app-api/</loc>
-    
-    <lastmod>2022-01-17T02:54:33.683Z</lastmod>
-    
-  </url>
+
   
   <url>
-    <loc>https://gocaff.cn/posts/php-interview/</loc>
-    
-    <lastmod>2022-01-17T02:54:33.683Z</lastmod>
-    
+    <loc>https://gocaff.cn/categories/liunx/</loc>
+    <lastmod>2023-01-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
   </url>
   
 </urlset>
